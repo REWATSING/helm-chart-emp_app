@@ -1,0 +1,11 @@
+backend:
+  image: vishnu420/emp-api:latest
+  replicas: 1
+
+frontend:
+  image: vishnu420/emp-ui:latest
+  replicas: 1
+
+mysql:
+  rootPassword: rootpass
+  database: empdb

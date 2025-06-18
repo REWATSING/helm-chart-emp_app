@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head><title>Employee App</title></head>
+<body>
+  <h2>Employee Manager</h2>
+  <input type="text" id="name" placeholder="Enter name"/>
+  <button onclick="add()">Add</button>
+  <ul id="list"></ul>
+
+<script>
+function load() {
+  fetch('/employees').then(r => r.json()).then(data => {
+    document.getElementById("list").innerHTML = data.map(emp => `<li>${emp[1]}</li>`).join('');
+  });
+}
+function add() {
+  const name = document.getElementById("name").value;
+  fetch('/employees', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ name })
+  }).then(() => load());
+}
+load();
+</script>
+</body>
+</html>
