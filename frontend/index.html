@@ -10,7 +10,7 @@
 <script>
 function load() {
   fetch('/employees').then(r => r.json()).then(data => {
-    document.getElementById("list").innerHTML = data.map(emp => `<li>${emp[1]}</li>`).join('');
+    document.getElementById("list").innerHTML = data.map(emp => `<li>${emp.name}</li>`).join('');
   });
 }
 function add() {
