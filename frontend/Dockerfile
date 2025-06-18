@@ -8,4 +8,3 @@ COPY nginx.conf /etc/nginx/nginx.conf
 
 # Copy frontend HTML
 COPY index.html /usr/share/nginx/html/
-COPY index.html /var/lib/html
