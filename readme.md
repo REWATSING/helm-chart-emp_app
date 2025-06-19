@@ -219,7 +219,7 @@ Add a screenshot here once the app is working fully in browser.
 
 ## 🙋‍♂️ Author
 
-**Vishnu Das**
+**Rewat Singh**
 DevOps Engineer | Kubernetes | Docker | Python
 
 ---
