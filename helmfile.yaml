@@ -1,0 +1,19 @@
+# helmfile.yaml
+repositories:
+  - name: bitnami
+    url: https://charts.bitnami.com/bitnami
+
+environments:
+  dev:
+    values:
+      - envs/dev/values.yaml
+  prod:
+    values:
+      - envs/prod/values.yaml
+
+releases:
+  - name: emp-fullstack
+    namespace: emp
+    chart: ./charts/emp-fullstack
+    values:
+      - values.yaml
