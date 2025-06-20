@@ -1,0 +1,28 @@
+backend:
+  image:
+    repository: ghcr.io/vishnu420/emp-api
+    tag: "1.0.0"
+    pullPolicy: Always
+  replicaCount: 2
+  env:
+    - name: DB_HOST
+      value: mysql
+    - name: DB_USER
+      valueFrom:
+        secretKeyRef:
+          name: db-secret
+          key: username
+
+frontend:
+  image:
+    repository: ghcr.io/vishnu420/emp-ui
+    tag: "1.0.0"
+    pullPolicy: Always
+
+mysql:
+  auth:
+    rootPassword: "use-sealed-secret"
+    username: empuser
+    password: "use-sealed-secret"
+    database: empdb
+# Prod environment values
