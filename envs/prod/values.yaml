@@ -1,3 +1,4 @@
+
 backend:
   image:
     repository: ghcr.io/vishnu420/emp-api
@@ -25,4 +26,24 @@ mysql:
     username: empuser
     password: "use-sealed-secret"
     database: empdb
-# Prod environment values
+
+ingress:
+  enabled: true
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+  hosts:
+    - host: emp.yourdomain.com
+      paths:
+        - path: /api
+          serviceName: backend
+          servicePort: 5000
+        - path: /
+          serviceName: frontend
+          servicePort: 80
+  tls:
+    - secretName: emp-tls
+      hosts:
+        - emp.yourdomain.com
+
+---
