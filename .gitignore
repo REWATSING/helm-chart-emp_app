@@ -1,0 +1,55 @@
+# === Python ===
+*.pyc
+__pycache__/
+.env
+venv/
+instance/
+*.sqlite3
+
+# === Node (Frontend) ===
+node_modules/
+dist/
+build/
+
+# === Docker ===
+*.log
+.dockerignore
+
+# === Terraform ===
+*.tfstate
+*.tfstate.*
+.terraform/
+.terraform.lock.hcl
+terraform.tfvars
+
+# === Helm / Kubernetes ===
+charts/**/charts/
+charts/**/templates/*.tpl
+*.tgz
+*.bak
+release.yaml
+helmfile.lock
+
+# === Secrets ===
+secrets.yaml
+*.enc
+*.sealed-secret.yaml
+*.pem
+*.key
+
+# === System Files ===
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# === Misc ===
+*.swp
+*.swo
+*.bak
+*.tmp
+*.out
+
+# === Git ===
+.git/
+
