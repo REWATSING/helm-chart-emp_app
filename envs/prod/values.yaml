@@ -1,8 +1,7 @@
-
 backend:
   image:
-    repository: vishnu420/emp-api:backend
-    tag: "1.0.0"
+    repository: vishnu420/emp-api
+    tag: "backend"
     pullPolicy: Always
   replicaCount: 2
   env:
@@ -16,10 +15,11 @@ backend:
 
 frontend:
   image:
-    repository: vishnu420/emp-api:frontend
-    tag: "1.0.0"
+    repository: vishnu420/emp-api
+    tag: "frontend"
     pullPolicy: Always
   replicaCount: 1
+
 mysql:
   auth:
     rootPassword: "use-sealed-secret"
