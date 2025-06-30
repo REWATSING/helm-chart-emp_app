@@ -8,6 +8,8 @@ environments:
     values:
       - envs/prod/values.yaml
 
+---
+
 releases:
   - name: emp-fullstack
     namespace: emp
