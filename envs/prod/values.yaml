@@ -1,7 +1,7 @@
 
 backend:
   image:
-    repository: ghcr.io/vishnu420/emp-api
+    repository: vishnu420/emp-api:backend
     tag: "1.0.0"
     pullPolicy: Always
   replicaCount: 2
@@ -16,7 +16,7 @@ backend:
 
 frontend:
   image:
-    repository: ghcr.io/vishnu420/emp-ui
+    repository: vishnu420/emp-api:frontend
     tag: "1.0.0"
     pullPolicy: Always
   replicaCount: 1
