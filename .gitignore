@@ -24,8 +24,8 @@ terraform.tfvars
 terraform.tfstate
 .backup
 # === Helm / Kubernetes ===
-charts/**/charts/
-charts/**/templates/*.tpl
+# charts/**/charts/
+# charts/**/templates/*.tpl
 *.tgz
 *.bak
 release.yaml
