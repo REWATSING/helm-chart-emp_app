@@ -5,7 +5,7 @@ metadata:
   labels:
     app: {{ .Release.Name }}-frontend
 spec:
-  replicas: {{ .Values.frontend.replicaCount | default 1 }}
+  replicas: {{ .Values.replicaCount | default 1 }}
   selector:
     matchLabels:
       app: {{ .Release.Name }}-frontend
