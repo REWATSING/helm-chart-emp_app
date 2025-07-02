@@ -1,5 +1,3 @@
-global:
-  replicaCount: 1
 
 backend:
   image:
