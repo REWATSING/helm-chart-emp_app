@@ -1,4 +1,3 @@
-
 backend:
   image:
     repository: vishnu420/emp-api
@@ -13,13 +12,13 @@ backend:
         secretKeyRef:
           name: db-secret
           key: username
-
 frontend:
   image:
     repository: vishnu420/emp-api
     tag: "frontend"
     pullPolicy: Always
-
+  replicaCount: 2
+  env: []
 mysql:
   auth:
     rootPassword: "use-sealed-secret"
@@ -36,14 +35,22 @@ ingress:
     - host: emp.yourdomain.com
       paths:
         - path: /api
-          serviceName: backend
-          servicePort: 5000
+          pathType: Prefix
+          backend:
+            service:
+              name: backend
+              port:
+                number: 5000
         - path: /
-          serviceName: frontend
-          servicePort: 80
+          pathType: Prefix
+          backend:
+            service:
+              name: frontend
+              port:
+                number: 80
   tls:
     - secretName: emp-tls
       hosts:
         - emp.yourdomain.com
-
+        
 ---
