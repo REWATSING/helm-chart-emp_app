@@ -2,7 +2,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: emp-ingress
+  name: {{ .Release.Name }}-ingress
   annotations:
     {{- range $key, $value := .Values.ingress.annotations }}
     {{ $key }}: {{ $value | quote }}
@@ -10,21 +10,20 @@ metadata:
 spec:
   rules:
     {{- range .Values.ingress.hosts }}
-    - host: {{ .host
-    
-     }}
+    - host: {{ .host }}
       http:
         paths:
           {{- range .paths }}
           - path: {{ .path }}
-            pathType: Prefix
+            pathType: {{ .pathType | default "Prefix" }}
             backend:
               service:
-                name: {{ .serviceName }}
+                name: {{ .backend.service.name }}
                 port:
-                  number: {{ .servicePort }}
+                  number: {{ .backend.service.port.number }}
           {{- end }}
     {{- end }}
+  {{- if .Values.ingress.tls }}
   tls:
     {{- range .Values.ingress.tls }}
     - hosts:
@@ -33,5 +32,6 @@ spec:
         {{- end }}
       secretName: {{ .secretName }}
     {{- end }}
+  {{- end }}
 {{- end }}
 

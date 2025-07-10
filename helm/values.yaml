@@ -51,6 +51,5 @@ ingress:
   tls:
     - secretName: emp-tls
       hosts:
-        - emp.yourdomain.com
-        
+        - emp.yourdomain.com        
 ---
