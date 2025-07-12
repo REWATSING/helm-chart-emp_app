@@ -1,9 +1,9 @@
 backend:
   image:
-    repository: vishnu420/emp-api
-    tag: "backend"
+    repository: vishnu420/emp-helm
+    tag: backend
     pullPolicy: Always
-  replicaCount: 2
+  replicaCount: 1
   env:
     - name: DB_HOST
       value: mysql
@@ -14,10 +14,10 @@ backend:
           key: username
 frontend:
   image:
-    repository: vishnu420/emp-api
-    tag: "frontend"
+    repository: vishnu420/emp-helm
+    tag: frontend
     pullPolicy: Always
-  replicaCount: 2
+  replicaCount: 1
   env: []
 mysql:
   auth:

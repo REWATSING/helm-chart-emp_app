@@ -43,6 +43,8 @@ secrets.yaml
 Thumbs.db
 .idea/
 .vscode/
+scripts/kubeseal-0.30.0-linux-amd64.tar.gz
+scripts/kubeseal
 
 # === Misc ===
 *.swp
