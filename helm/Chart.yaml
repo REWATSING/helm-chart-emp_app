@@ -2,3 +2,7 @@ apiVersion: v2
 name: emp-fullstack
 version: 1.0.0
 description: Fullstack app with backend, frontend, MySQL
+dependencies:
+  - name: mysql
+    version: 9.19.0
+    repository: https://charts.bitnami.com/bitnami

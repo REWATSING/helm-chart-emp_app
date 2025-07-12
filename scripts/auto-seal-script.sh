@@ -48,3 +48,5 @@ kubeseal \
 
 echo "[✔] Sealed secret written to: $SEALED_FILE"
 
+echo "appling the secret yaml for deplyment of secrets"
+kubectl apply -f ../manifests/db-secret-sealed.yaml

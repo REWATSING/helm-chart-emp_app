@@ -43,8 +43,9 @@ secrets.yaml
 Thumbs.db
 .idea/
 .vscode/
+# === Large or Binary Files ===
 scripts/kubeseal-0.30.0-linux-amd64.tar.gz
-scripts/kubeseal
+scripts/kubeseal         # Large binary file (>50MB)
 
 # === Misc ===
 *.swp

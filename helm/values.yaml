@@ -11,26 +11,35 @@ backend:
       valueFrom:
         secretKeyRef:
           name: db-secret
-          key: username
+          key: DB_USER
+    - name: DB_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: db-secret
+          key: DB_PASSWORD
+    - name: DB_NAME
+      valueFrom:
+        secretKeyRef:
+          name: db-secret
+          key: DB_NAME
 frontend:
   image:
     repository: vishnu420/emp-helm
     tag: frontend
     pullPolicy: Always
   replicaCount: 1
-  env: []
+
 mysql:
-  auth:
-    rootPassword: "use-sealed-secret"
-    username: empuser
-    password: "use-sealed-secret"
-    database: empdb
+  primary:
+    persistence:
+      enabled: true
+      size: 1Gi
 
 ingress:
   enabled: true
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
-    cert-manager.io/cluster-issuer: letsencrypt-prod
+    # cert-manager.io/cluster-issuer: letsencrypt-prod  # <-- Optional: remove this if not using cert-manager
   hosts:
     - host: emp.yourdomain.com
       paths:
@@ -48,8 +57,8 @@ ingress:
               name: frontend
               port:
                 number: 80
-  tls:
-    - secretName: emp-tls
-      hosts:
-        - emp.yourdomain.com        
----
+  # tls:  # <-- Entire TLS block removed
+  #   - secretName: emp-tls
+  #     hosts:
+  #       - emp.yourdomain.com
+
