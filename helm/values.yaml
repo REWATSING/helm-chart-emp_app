@@ -6,17 +6,20 @@ backend:
   replicaCount: 1
   env:
     - name: DB_HOST
-      value: mysql
+      valueFrom:
+        secretKeyRef:
+          name: db-secret
+          key: DB_HOST
     - name: DB_USER
       valueFrom:
         secretKeyRef:
           name: db-secret
           key: DB_USER
-    - name: DB_PASSWORD
+    - name: DB_PASS
       valueFrom:
         secretKeyRef:
           name: db-secret
-          key: DB_PASSWORD
+          key: DB_PASS
     - name: DB_NAME
       valueFrom:
         secretKeyRef:
@@ -30,6 +33,9 @@ frontend:
   replicaCount: 1
 
 mysql:
+  auth:
+    rootPassword: rootpass        # ✅ Match this to your `DB_PASS` in secret
+    database: empdb
   primary:
     persistence:
       enabled: true
